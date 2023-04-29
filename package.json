@@ -10,7 +10,7 @@
     "start": "nodemon server.js"
   },
   "author": "Fernando Sanchez Gutierrez",
-  "license": "ISC",
+  "license": "MIT",
   "devDependencies": {
     "nodemon": "^2.0.22"
   }
