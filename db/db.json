@@ -1,10 +1,5 @@
 [
     {
-        "title": "Test Title",
-        "text": "Test text",
-        "id": "id"
-    },
-    {
         "title": "Death Note",
         "text": "Pretty good anime",
         "id": "bc99"
@@ -13,5 +8,25 @@
         "title": "Demon Slayer",
         "text": "Great anime, love the art",
         "id": "b841"
+    },
+    {
+        "title": "Attack on titan",
+        "text": "Pretty weird stuff but insteresting, kinda bad ending tho",
+        "id": "4a57"
+    },
+    {
+        "title": "Naruto",
+        "text": "One of the classics, soapy but good messages and good fights",
+        "id": "5c03"
+    },
+    {
+        "title": "this is a browser note",
+        "text": "\na new note created from the browser",
+        "id": "476b"
+    },
+    {
+        "title": "Another note from the browse",
+        "text": "Test number 2 from the browser",
+        "id": "0b9f"
     }
 ]

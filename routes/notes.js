@@ -1,5 +1,6 @@
 const express = require("express");
 const router = express.Router();
+const path = require("path");
 const util = require("util");
 const fs = require("fs");
 const id = require("../helpers/id");
@@ -41,7 +42,7 @@ router.get("/", (req, res) => {
   readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
-// POST Route for a new UX/UI tip
+// POST Route for a new UX/UI note
 router.post("/", (req, res) => {
   console.info(`${req.method} request received to add a note`);
 
@@ -55,9 +56,25 @@ router.post("/", (req, res) => {
     };
 
     readAndAppend(newNote, "../Note-Taker/db/db.json");
-    res.json(`Tip added successfully 🚀`);
+    res.json(newNote);
   } else {
     res.error("Error in adding tip");
+  }
+});
+
+router.delete("/:id", (req, res) => {
+  const id = req.params.id;
+  const data = fs.readFileSync(path.join(__dirname, "../db/db.json"));
+  let notes = JSON.parse(data);
+
+  const index = notes.findIndex((note) => note.id === id);
+
+  if (index !== -1) {
+    notes.splice(index, 1);
+    writeToFile("../Note-Taker/db/db.json", notes);
+    res.json(`Note withid ${id} was deleted`);
+  } else {
+    res.status(404).json(`Note with id ${id} not found.`);
   }
 });
 
