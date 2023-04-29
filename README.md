@@ -7,17 +7,22 @@
 - [Note taker](#note-taker)
   - [Table of contents](#table-of-contents)
   - [Description](#description)
+  - [Website](#website)
   - [Installation](#installation)
   - [Usage](#usage)
   - [mit License](#mit-license)
   - [Contributing](#contributing)
   - [Tests](#tests)
-  - [Website](#website)
   - [Questions](#questions)
 
 ## Description
 
 An application that can be used to write and save notes. This application uses Express.js back end and saves and retrieves note data from a JSON file.
+
+## Website
+
+[Link to the web app](https://fathomless-caverns-42442.herokuapp.com/)
+![A screenshot of the note take app](./Assets/App%20screenshot.png "Note Taker screenshot")
 
 ## Installation
 
@@ -33,9 +38,6 @@ A short and simple permissive license with conditions only requiring preservatio
 
 An application that can be used to write and save notes. This application uses Express.js back end and saves and retrieves note data from a JSON file.
 
-## Website
-https://fathomless-caverns-42442.herokuapp.com/
-
 ## Contributing
 
 There are no guidelines for contributing at the moment but feel free to reach out to me with any questions or suggestions.
@@ -43,11 +45,6 @@ There are no guidelines for contributing at the moment but feel free to reach ou
 ## Tests
 
 There are no tests for this project at the moment.
-
-## Website
-
-[Link to the web app](https://fathomless-caverns-42442.herokuapp.com/)
-![A screenshot of the note take app](./Assets/App%20screenshot.png "Note Taker screenshot")
 
 ## Questions
 
