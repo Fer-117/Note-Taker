@@ -31,7 +31,7 @@ const readAndAppend = (content, dbFile) => {
     } else {
       const parsedData = JSON.parse(data);
       parsedData.push(content);
-      writeToFile("../Note-Taker/db/db.json", parsedData);
+      writeToFile("../db/db.json", parsedData);
     }
   });
 };
@@ -39,7 +39,7 @@ const readAndAppend = (content, dbFile) => {
 // GET Route for retrieving all the tips
 router.get("/", (req, res) => {
   console.info(`${req.method} request received for notes`);
-  readFromFile("./db/db.json").then((data) => res.json(JSON.parse(data)));
+  readFromFile("../db/db.json").then((data) => res.json(JSON.parse(data)));
 });
 
 // POST Route for a new UX/UI note
@@ -55,7 +55,7 @@ router.post("/", (req, res) => {
       id: id(),
     };
 
-    readAndAppend(newNote, "../Note-Taker/db/db.json");
+    readAndAppend(newNote, "../db/db.json");
     res.json(newNote);
   } else {
     res.error("Error in adding tip");
@@ -71,7 +71,7 @@ router.delete("/:id", (req, res) => {
 
   if (index !== -1) {
     notes.splice(index, 1);
-    writeToFile("../Note-Taker/db/db.json", notes);
+    writeToFile("../db/db.json", notes);
     res.json(`Note withid ${id} was deleted`);
   } else {
     res.status(404).json(`Note with id ${id} not found.`);
