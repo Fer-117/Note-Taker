@@ -4,7 +4,9 @@ const path = require("path");
 const util = require("util");
 const fs = require("fs");
 const id = require("../helpers/id");
+const dbPath = path.join(__dirname, "../db/db.json");
 
+console.log(dbPath);
 const readFromFile = util.promisify(fs.readFile);
 
 /**
@@ -31,7 +33,7 @@ const readAndAppend = (content, dbFile) => {
     } else {
       const parsedData = JSON.parse(data);
       parsedData.push(content);
-      writeToFile("../db/db.json", parsedData);
+      writeToFile(dbPath, parsedData);
     }
   });
 };
@@ -39,7 +41,7 @@ const readAndAppend = (content, dbFile) => {
 // GET Route for retrieving all the tips
 router.get("/", (req, res) => {
   console.info(`${req.method} request received for notes`);
-  readFromFile("../db/db.json").then((data) => res.json(JSON.parse(data)));
+  readFromFile(dbPath).then((data) => res.json(JSON.parse(data)));
 });
 
 // POST Route for a new UX/UI note
@@ -55,7 +57,7 @@ router.post("/", (req, res) => {
       id: id(),
     };
 
-    readAndAppend(newNote, "../db/db.json");
+    readAndAppend(newNote, dbPath);
     res.json(newNote);
   } else {
     res.error("Error in adding tip");
@@ -63,15 +65,17 @@ router.post("/", (req, res) => {
 });
 
 router.delete("/:id", (req, res) => {
+  console.log(dbPath);
+
   const id = req.params.id;
-  const data = fs.readFileSync(path.join(__dirname, "../db/db.json"));
+  const data = fs.readFileSync(dbPath);
   let notes = JSON.parse(data);
 
   const index = notes.findIndex((note) => note.id === id);
 
   if (index !== -1) {
     notes.splice(index, 1);
-    writeToFile("../db/db.json", notes);
+    writeToFile(dbPath, notes);
     res.json(`Note withid ${id} was deleted`);
   } else {
     res.status(404).json(`Note with id ${id} not found.`);
